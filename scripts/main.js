@@ -74,7 +74,12 @@ var ResultsView = Backbone.View.extend({
 
  var BreweryView = Backbone.View.extend({
 
-  //  template: _.template( $('#brewery-info-template').text() ),
+   el: 'a',
+   events: {
+  'click': 'template'
+  },
+
+  template: _.template( $('#brewery-info-template').text() ),
 
 
  });

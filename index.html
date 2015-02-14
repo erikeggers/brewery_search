@@ -7,32 +7,17 @@
 </head>
 <body>
 
-<!-- renderTemplate is rendered inside div class = "app-container" -->
+<h1>Brewery Search</h1>
+<form>
+   <input type="text">
+</form>
 
-<div class="app-container">
+<div id="app-container">
 
 </div>
 
-<script type="text/template" id="brewery-search-template">
-
-<h1>Brewery Search</h1>
-<h2>Search by State</h2>
-<form id="state-search">
-  <input id="search-terms" size="32">
-  <span><a href="#results/<%= index %>">SEARCH</a></span>
-</form>
-</script>
-
-
-<script type="text/template" id="brewery-list-template">
-  <ul>
-    <li><a href="#brewery/<%= index %>">Brewery 1</a></li>
-    <li><a href="#brewery/<%= index %>">Brewery 2</a></li>
-    <li><a href="#brewery/<%= index %>">Brewery 3</a></li>
-    <li><a href="#brewery/<%= index %>">Brewery 4</a></li>
-  </ul>
-  <h3>You passed the value of "<%= urlReference %>" in your URL!</h3>
-</script>
+<ul id="results">
+</ul>
 
 
 <script type="text/template" id="brewery-info-template">

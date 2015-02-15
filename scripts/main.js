@@ -75,7 +75,6 @@
       this.$el.empty();
       var self = this;
       this.collection.each(function(result) {
-        // self.$el.append('<li><a href="#results/' + searchTerm.replace(/ /g, '+') + '/' + result.get('breweryId') + '">' + result.get('brewery').name + '</a></li>');
         self.$el.append('<li><a href="#results/' + searchTerm.replace(/ /g, '+') + '/' + result.id + '">' + result.get('brewery').name + '</a></li>');
 
       });
@@ -85,25 +84,11 @@
   var BreweryView = Backbone.View.extend({
      el: '#details',
 
-    //  initialize: function(){
-    //    this.listenTo(this.collection, 'sync', this.render);
-    //  },
-
      render: function() {
       //  this.$('input');
        this.$el.empty();
-
-      //  var test = this.collection.find(function(results){
-      //    return results.get('breweryId');
-      //   });
-
-      //  console.log(this.collection);
-       //
-      //  console.log(test);
-       //
-      //  console.log(test.attributes.brewery.name);
+       
       console.log(this.model);
-
        this.$el.append('this is where the brewery info goes');
      }
 

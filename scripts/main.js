@@ -84,12 +84,13 @@
   var BreweryView = Backbone.View.extend({
      el: '#app-container',
 
-
      template: _.template( $('#brewery-info-template').text() ),
 
      render: function(){
-       this.$el.html( this.template() );
+       this.$el.empty();
+       this.$el.html( this.template(this.model.toJSON()) );
        console.log(this.model.get ('brewery').name);
+       console.log(this.model);
        return this;
 
      }

@@ -21,11 +21,20 @@
 
 
 <script type="text/template" id="brewery-info-template">
+  <img src="<%= brewery.images.medium %>" alt="">
   <ul>
-    <li><%= name %></li>
-    <li><a href="#">Type</a></li>
-    <li><a href="#">Address</a></li>
-    <li><a href="#">Phone Number</a></li>
+    <li><%= brewery.name %></li>
+    <li><%= locationTypeDisplay %></li>
+    <ul>
+      <li><%= streetAddress %></li>
+      <li><%= locality %>, <%= region %> <%= postalCode %></li>
+    </ul>
+    <li>Phone: <%= phone %></li>
+    <li>Open to public: <%= openToPublic %> </li>
+    <li>Hours: <% hoursOfOperation %> </li>
+  </ul>
+  <ul>
+    <li><%= brewery.description %></li>
   </ul>
 </script>
 

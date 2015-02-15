@@ -140,7 +140,6 @@
 
       var breweryView = new BreweryView({collection: this.list});
       breweryView.render();
-      console.log('here');
     }
   });
 

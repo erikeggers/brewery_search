@@ -4,9 +4,9 @@
 
   'use strict';
 
-  var searchTerm;
-
   window.App = window.App || {};
+
+  var searchTerm;
 
   var AppModel = Backbone.Model.extend({
     defaults: {
@@ -81,11 +81,6 @@
     },
   });
 
-  //   renderBrewery: function() {
-  //     var breweryView = new BreweryView();
-  //   }
-  // });
-
   var BreweryView = Backbone.View.extend({
      el: '#details',
 
@@ -98,7 +93,7 @@
        this.$el.empty();
 
        var test = this.collection.find(function(results){
-         return results.get('breweryId') === breweryId;
+         return results.get('breweryId');
        });
 
        console.log(this.collection);
@@ -143,7 +138,7 @@
       this.appModel.set('searchTerm', state);
       this.list.fetch();
 
-      var myBreweryView = new BreweryView;
+      var breweryView = new BreweryView({collection: this.list});
       breweryView.render();
       console.log('here');
     }

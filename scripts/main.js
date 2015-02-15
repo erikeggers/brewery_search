@@ -84,6 +84,11 @@
   var BreweryView = Backbone.View.extend({
      el: '#app-container',
 
+     defaults: {
+       hoursOfOperation: 'Not listed',
+       streetAddress: 'Not listed'
+     },
+
      template: _.template( $('#brewery-info-template').text() ),
 
      render: function(){
@@ -94,16 +99,6 @@
        return this;
 
      }
-
-
-
-    //  render: function() {
-    //    this.$el.empty();
-    //
-    //   console.log(this.model);
-    //   console.log(this.model.get ('brewery').name);
-    //    this.$el.append(this.model.get ('brewery').name);
-    //  }
 
    });
 

@@ -82,16 +82,27 @@
   });
 
   var BreweryView = Backbone.View.extend({
-     el: '#details',
+     el: '#app-container',
 
-     render: function() {
-      //  this.$('input');
-       this.$el.empty();
-       
-      console.log(this.model);
-       this.$el.append('this is where the brewery info goes');
+
+     template: _.template( $('#brewery-info-template').text() ),
+
+     render: function(){
+       this.$el.html( this.template() );
+       console.log(this.model.get ('brewery').name);
+       return this;
+
      }
 
+
+
+    //  render: function() {
+    //    this.$el.empty();
+    //
+    //   console.log(this.model);
+    //   console.log(this.model.get ('brewery').name);
+    //    this.$el.append(this.model.get ('brewery').name);
+    //  }
 
    });
 

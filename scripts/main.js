@@ -20,14 +20,24 @@
     }
   });
 
+
   var Result = Backbone.Model.extend({
-     defaults: {
-       phone: '',
-       hoursOfOperation: '',
-       streetAddress: '',
-       medium: ''
-     }
-   });
+    defaults: function(attributes) {
+      attributes = attributes || {};
+      _.defaults(attributes, {
+        phone: 'Not listed',
+        hoursOfOperation: 'Not listed',
+        streetAddress: 'Not listed',
+      });
+
+      attributes.brewery.images = attributes.brewery.images || {};
+      _.defaults(attributes.brewery.images, {
+        medium: ''
+      });
+
+      return attributes;
+    }
+  });
 
   var ResultsCollection = Backbone.Collection.extend({
     initialize: function(collection, options) {
@@ -95,12 +105,6 @@
      template: _.template( $('#brewery-info-template').text() ),
 
      render: function(){
-      //  var options = options || {};
-      //  _.defaults(options, {
-      //    hoursOfOperation: 'Not listed',
-      //    streetAddress: 'Not listed',
-      //    medium: ''
-      //  });
 
        this.$el.empty();
        this.$el.html( this.template(this.model.toJSON()) );

@@ -20,7 +20,14 @@
     }
   });
 
-  var Result = Backbone.Model.extend({});
+  var Result = Backbone.Model.extend({
+     defaults: {
+       phone: '',
+       hoursOfOperation: '',
+       streetAddress: '',
+       medium: ''
+     }
+   });
 
   var ResultsCollection = Backbone.Collection.extend({
     initialize: function(collection, options) {
@@ -84,14 +91,17 @@
   var BreweryView = Backbone.View.extend({
      el: '#app-container',
 
-     defaults: {
-       hoursOfOperation: 'Not listed',
-       streetAddress: 'Not listed'
-     },
 
      template: _.template( $('#brewery-info-template').text() ),
 
      render: function(){
+      //  var options = options || {};
+      //  _.defaults(options, {
+      //    hoursOfOperation: 'Not listed',
+      //    streetAddress: 'Not listed',
+      //    medium: ''
+      //  });
+
        this.$el.empty();
        this.$el.html( this.template(this.model.toJSON()) );
        console.log(this.model.get ('brewery').name);

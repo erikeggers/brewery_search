@@ -20,7 +20,6 @@
     }
   });
 
-
   var Result = Backbone.Model.extend({
     defaults: function(attributes) {
       attributes = attributes || {};
@@ -30,12 +29,12 @@
         streetAddress: 'Not listed',
       });
 
+      attributes.brewery = attributes.brewery || {};
+
       attributes.brewery.images = attributes.brewery.images || {};
       _.defaults(attributes.brewery.images, {
         medium: ''
       });
-
-
       return attributes;
     }
   });
@@ -50,7 +49,6 @@
       var searchTerm = this.appModel.get('searchTerm').replace(/ /g, '+');
       var base = 'http://api.brewerydb.com/v2/locations?region=';
       var keyBase = '&key=';
-      // var key = 'da7893f044ebeecf79010b9e07bc84aa';
       var key = 'ebc1178ffae225ad44a88dcb1d8e221c';
       return cors + encodeURIComponent(base + searchTerm + keyBase + key);
     },
@@ -101,7 +99,6 @@
 
   var BreweryView = Backbone.View.extend({
      el: '#app-container',
-
 
      template: _.template( $('#brewery-info-template').text() ),
 

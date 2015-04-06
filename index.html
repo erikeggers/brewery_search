@@ -3,45 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <title>Brewery Search</title>
-  <link href="styles/main.css" />
+  <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+  <link href="styles/custom.css" rel="stylesheet"/>
 </head>
 <body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <span class="navbar-brand">Brewery Search</span>
+    </div>
+  </div>
+</nav>
 
-<h1>Brewery Search</h1>
-<form>
-   <input type="text">
-</form>
+<div class="container">
+  <form>
+    <div class="form-group">
+    <label>Search by State</label>
+      <input type="text" class="form-control" placeholder="Enter State you would like to search by">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <div id="app-container"></div>
 
-<div id="app-container">
-
+  <ul id="results" class="results list-unstyled">
+  </ul>
 </div>
 
-<ul id="results">
-</ul>
-
-
 <script type="text/template" id="brewery-info-template">
-  <img src="<%= brewery.images.medium %>" alt="">
-  <ul>
-    <li><%= brewery.name %></li>
-    <li><%= locationTypeDisplay %></li>
-    <ul>
-      <li><%= streetAddress %></li>
-      <li><%= locality %>, <%= region %> <%= postalCode %></li>
-    </ul>
-    <li>Phone: <%= phone %></li>
-    <li>Open to public: <%= openToPublic %> </li>
-    <li>Hours: <% hoursOfOperation %> </li>
-  </ul>
-  <ul>
-    <li><%= brewery.description %></li>
-  </ul>
+  
+  <div class="brewery">
+    <% if (obj.brewery.images) { %>
+      <img src="<%= brewery.images.medium %>" alt="brewery image" class="brewery-image">    
+    <% } %>
+    <dl class="dl-horizontal">
+      <dt>Name:</dt>
+        <dd> <%= brewery.name %> </dd>
+      <dt>Type:</dt>
+        <dd> <%= locationTypeDisplay %> </dd>
+      <dt>Established:</dt>
+        <dd> 
+          <% if (obj.yearOpened) { %>
+            <%= yearOpened %> 
+          <% } else { %>
+            <span>Not Listed</span>
+          <% } %>    
+        </dd>
+      <dt>Address:</dt>
+        <dd> <%= streetAddress %> </dd>
+        <dd> <%= locality %>, <%= region %> <% if (obj.postalCode) { %> <%= postalCode %> <% } %> </dd>
+      <dt>Phone:</dt>
+        <dd> <%= phone %> </dd>
+      <dt>Website:</dt>
+        <dd> 
+          <% if (obj.website) { %>
+            <a href=" <%= website %> "> Y </a> 
+          <% } else { %>
+            <span>Not Listed</span>
+          <% } %> 
+        </dd>
+      <dt>Open to public:</dt>
+        <dd> <%= openToPublic %> </dd>
+      <dt>Hours:</dt>
+        <dd> <%= hoursOfOperation %> </dd>
+      <dt>About:</dt>
+        <dd>
+          <% if (obj.brewery.description) { %>
+            <%= brewery.description %>
+          <% } else { %>
+            <span>Not Listed</span>
+          <% } %>
+        </dd>
+    </dl>
+  <div>
 </script>
 
 
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/underscore/underscore.js"></script>
 <script src="bower_components/backbone/backbone.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <script type="text/javascript" src="scripts/main.js"></script>
 </body>
